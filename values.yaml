@@ -1,4 +1,4 @@
-kubriXIngressDomain: local # gets overwritten by kubriX cluster appset
+kubriXIngressDomain: "local" # gets overwritten by kubriX cluster appset
 replicaCount: 1
 
 image:
