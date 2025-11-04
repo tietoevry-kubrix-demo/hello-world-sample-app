@@ -2,7 +2,11 @@ teamName: kubrix
 appName: hello-world-sample-app 
 appType: helm
 repoUrl: https://github.com/tietoevry-kubrix-demo/hello-world-sample-app
-createAppNamespace: true
+appNamespace:
+  create: true
+  annotations: {}
+  labels: {}
+appDefinition: {}
 stages:
   - name: "dev"
     targetClusterStage: "dev"
