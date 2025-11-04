@@ -1,7 +1,7 @@
 teamName: kubrix
 appName: hello-world-sample-app 
 appType: helm
-repoUrl: https://github.com/tietoevry-kubrix-demo/hello-world-sample-app
+repoUrl: https://github.com/tietoevry-kubrix-demo/kubrix-hello-world-sample-app
 appNamespace:
   create: true
   annotations: {}
