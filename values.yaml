@@ -15,10 +15,14 @@ message: "Hello World from Helm!"
 ingress:
   enabled: true
   className: "nginx"
-  annotations: {}
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: true
   hosts:
     - host: hello-world.{{ .Values.kubriXIngressDomain }}
       paths:
         - path: /
           pathType: Prefix
-  tls: []
+  tls:
+    - hosts:
+        - hello-world.{{ .Values.kubriXIngressDomain }}
+      secretName: hello-world-server-tls
