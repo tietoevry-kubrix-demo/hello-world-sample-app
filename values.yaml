@@ -21,7 +21,3 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-  tls:
-    - hosts:
-        - hello-world.{{ .Values.kubriXIngressDomain }}
-      secretName: hello-world-server-tls
