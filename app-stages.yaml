@@ -1,0 +1,36 @@
+teamName: kubrix
+appName: hello-world-sample-app 
+appType: helm
+repoUrl: https://github.com/tietoevry-kubrix-demo/hello-world-sample-app
+appNamespace:
+  create: true
+  annotations: {}
+  labels: {}
+appDefinition: {}
+stages:
+  - name: "dev"
+    targetClusterStage: "dev"
+    requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: warehouse-{{ .Values.appName }}
+      sources:
+        direct: true
+  - name: "test"
+    targetClusterStage: "test"
+    requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: warehouse-{{ .Values.appName }}
+      sources:
+        stages:
+        - dev
+  - name: "prod"
+    targetClusterStage: "prod"
+    requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: warehouse-{{ .Values.appName }}
+      sources:
+        stages:
+        - test

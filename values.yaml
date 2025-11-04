@@ -1,0 +1,23 @@
+kubriXIngressDomain: "local" # gets overwritten by kubriX cluster appset
+replicaCount: 1
+
+image:
+  repository: hashicorp/http-echo
+  tag: "0.2.3"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+# Message shown by the echo server
+message: "Hello World from Helm!"
+
+ingress:
+  enabled: true
+  className: "nginx-tietoevry"
+  hosts:
+    - host: hello-world.{{ .Values.kubriXIngressDomain }}
+      paths:
+        - path: /
+          pathType: Prefix

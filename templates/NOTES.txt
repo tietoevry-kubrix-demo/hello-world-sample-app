@@ -1,0 +1,11 @@
+Thanks for installing {{ .Chart.Name }}!
+
+{{- if .Values.ingress.enabled }}
+1. Make sure an IngressController is installed and configured.
+2. Update your DNS or /etc/hosts to point {{ (index .Values.ingress.hosts 0).host }} at your cluster ingress.
+3. Then browse to: http://{{ (index .Values.ingress.hosts 0).host }}{{ (index (index .Values.ingress.hosts 0).paths 0).path }}
+{{- else }}
+Service is exposed internally on port {{ .Values.service.port }}.
+Use `kubectl port-forward svc/{{ include "hello-world.fullname" . }} 8080:{{ .Values.service.port }}`
+and then open http://localhost:8080
+{{- end }}
