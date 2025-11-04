@@ -16,8 +16,6 @@ message: "Hello World from Helm!"
 ingress:
   enabled: true
   className: "nginx-tietoevry"
-  annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   hosts:
     - host: hello-world.{{ .Values.kubriXIngressDomain }}
       paths:
